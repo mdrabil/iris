@@ -320,7 +320,7 @@
     .trust { margin-top: 18px; color: var(--text-dim); font-size: 14px; }
 
     /* Features */
-    .section { padding: 70px 0; }
+    .section { padding: 70px 0 0 0; }
     .section h2 { text-align: center; font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin: 0 0 14px; }
     .section p.lead { text-align: center; margin: 0 auto 42px; color: var(--text-dim); max-width: 780px; }
 
@@ -506,7 +506,7 @@
     .faq-a p { margin: 10px 0 0; color: var(--text-dim); }
 
     /* Footer */
-    footer { padding: 38px 0 80px; color: var(--text-dim); border-top: 1px solid var(--stroke); background: #0b0c12; }
+    footer { padding: 38px 0  50px; color: var(--text-dim); border-top: 1px solid var(--stroke); background: #0b0c12; }
     .footer-grid { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 18px; }
     @media (max-width: 1000px){ .footer-grid { grid-template-columns: 1fr; } }
     .small { font-size: 13px; color: #9aa2b4; }
@@ -550,8 +550,8 @@ color: black;
   <nav class="nav">
     <div class="container nav-row">
       <a class="brand" href="#">
-        <span class="logo" aria-hidden="true"></span>
-        <span>Iris<span style="color:var(--primary)">.AI</span></span>
+        <span class="logo" aria-hidden="true"> <img src="./logo.png" alt=""></span>
+        <span>Iris<span style="color:var(--primary)">.Analyst</span></span>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
       <div class="nav-links" id="navLinks">
@@ -570,7 +570,7 @@ color: black;
   <header class="hero container">
     <div class="badge"><span class="spark"></span> New: Ultra model v3 — 30% faster</div>
     <h1>🌟 Earn ₹1 Crore in 1 Year through IRIS Analysis Business</h1>
-    <p>No Office Needed | No Staff Required | Work Globally from Home Limited to First 15 Brand Owners Only – Apply Now 📜 USA Certification – Become a Certified IRIS Analyst</p>
+    <p style="color: gold; font-weight: bold;">No Office Needed | No Staff Required | Work Globally from Home Limited to First 15 Brand Owners Only – Apply Now 📜 USA Certification – Become a Certified IRIS Analyst</p>
     <div class="hero-cta">
       <a href="#pricing" class="cta-btn">Start Free</a>
       <a href="#gallery" class="btn-secondary">See Examples</a>
@@ -583,11 +583,12 @@ color: black;
           <span class="small" style="margin-left:10px;">Iris Studio</span>
         </div>
         <div class="canvas">
-          <div class="demo-text">
+          <!-- <div class="demo-text">
             <div class="chip" style="animation: pulse 2s ease-in-out infinite;">Iris Studio Demo</div>
             <h3 style="margin:.4rem 0 0">“a neon cyberpunk city street at night, cinematic, ultra detailed”</h3>
             <p class="mute" style="margin-top:8px">Instant preview • Upscale 4x • Remove background • Variations</p>
-          </div>
+          </div> -->
+          <!-- <img src="./logo.png" alt=""> -->
           <!-- Animated processing indicator -->
           <div style="position: absolute; bottom: 20px; right: 20px; display: flex; gap: 8px;">
             <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite;"></div>
@@ -669,10 +670,30 @@ color: black;
           <li><span class="check">✓</span><span>Freedom of time and money</span></li>
         </ul>
       </div>
-      <div class="card">
+
+        <div class="card">
+        <div class="icon"><span class="emoji">🖌️</span></div>
+        <h3>
+        <!-- Why It’s Needed  -->
+         Who Can Apply?
+        </h3>
+        <p>If you’re someone with the right mindset — driven, futuristic, and eager to build something meaningful — this is for you. This business is designed for those who want:</p>
+
+
+            <ul class="ul">
+          <li><span class="check">✓</span><span>•	A scalable, future-ready model powered by automation</span></li>
+          <li><span class="check">✓</span><span>•	Bigger income potential without staff or office</span></li>
+          <li><span class="check">✓</span><span>•	Work-life balance with freedom of time and money</span></li>
+          <li><span class="check">✓</span><span>•	Teachers, HRs, professionals</span></li>
+          <li><span class="check">✓</span><span>•	Coaches, trainers, psychologists</span></li>
+        </ul>
+      </div>
+
+      
+      <!-- <div class="card">
         <div class="icon"><span class="emoji">🖌️</span></div>
       <h3>📊 <span style="color: red;"> 9–5 Job</span> vs <span style="color: gold;">IRIS Analysis Business</span></h3>
-        <!-- <p>Background removal, inpainting, upscaling 4×, prompt variations—sab built‑in.</p> -->
+     
          <div style="display: flex;  justify-content: space-between; align-items: center;flex-wrap: wrap;">
           <div class="jobs-trading">
             <p>
@@ -699,7 +720,9 @@ color: black;
         </ul>
           </div>
          </div>
-      </div>
+      </div> -->
+   
+   
     </div>
   </section>
 
@@ -770,6 +793,15 @@ color: black;
 
 
 
+
+
+
+
+
+
+
+
+
   <!-- How it works -->
   <section id="how" class="section container">
     <h2>⚖️ How It Works</h2>
@@ -798,18 +830,114 @@ color: black;
 
 
 
+<section id="" class="section container">
+    <h2 style="text-align: center;">Let's Comparison</h2>
+    <h3 style="text-align: center;">
+        📊 <span style="color: red;">9–5 Job</span> vs <span style="color: gold;">Traditional Business</span> vs IRIS Analysis Business
+    </h3>
+
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 16px; white-space: nowrap;">
+            <thead>
+                <tr style="background-color: #f2f2f214;">
+                    <th style="padding: 12px; border: 1px solid #ccc; text-align: left;">Aspect</th>
+                    <th style="padding: 12px; border: 1px solid #ccc; text-align: left; color: red;">9–5 Job</th>
+                    <th style="padding: 12px; border: 1px solid #ccc; text-align: left; color: goldenrod;">Traditional Business</th>
+                    <th style="padding: 12px; border: 1px solid #ccc; text-align: left; color: green;">IRIS Analysis Business></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Work Location & Time</td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check-cencel">✗ </span> Fixed hours, location bound</td>
+                    <td style="padding: 10px; border: 1px solid #ddd; ">
+                      <div style="display: flex; align-items: center; gap: 10px;">
+                      <span class="check-cencel">✗ </span> Location-bound, long hours
+                    </div>
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check">✓</span> Work anytime, anywhere</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Investment & Risk</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  No ownership, fixed income</div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">
+                      <div style="display: flex; align-items: center; gap: 10px;">
+                      <span class="check-cencel">✗ </span>  High investment, high risk</div> </td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check">✓</span> Low investment, low risk</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Staff & Infrastructure</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  No ownership </div> </td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Needs staff & office </div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check">✓</span> No staff, no office</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Growth Potential</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Slow, limited promotions</div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Market saturation risk </div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check">✓</span> Future-ready & scalable</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Impact on Others</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Limited  </div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Limited </div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check">✓</span> Deeply transforms lives</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Freedom & Flexibility</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Low </div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Low–moderate </div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check">✓</span> High — time & money freedom</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Scalability</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Bound by employer </div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Bound by resources </div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check">✓</span> Global, unlimited reach</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Purpose & Fulfilment</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Dependent on employer </div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><div style="display: flex; align-items: center; gap: 10px;flex-wrap: wrap; white-space: no-wrap;">
+                      <span class="check-cencel">✗ </span>  Dependent on market</div></td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check">✓</span> High — adds real value</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
 
 
-  <!-- How it works -->
+
+
+
 
 
   <!-- Pricing -->
   <section id="pricing" class="section container">
-    <h2>👥 Who Can Apply?</h2>
+    <h2
+    >
+    👥
+     <!-- Who Can Apply? -->
+     <!-- Who Can Apply? -->
+       Let's Earn ₹1 Crore in 1 year
+  </h2>
     <p class="lead">If you’re someone with the right mindset — driven, futuristic, and eager to build something meaningful — this is for you. This business is designed for those who want:</p>
     <div class="pricing">
       <div class="price-card">
-        <div class="price-title"><h3>✨ <br> Make ₹1 Crore in 1 Year – Roadmap Available</h3>
+        <div class="price-title"><h3><div style="font-size: 40px;">✨</div> ₹1 Crore in 1 Year Roadmap Avl.</h3>
           <!-- <span class="pill">Best to try</span> -->
         </div>
         <div class="period">This model has been designed to scale fast — Roadmap available</div>
@@ -822,7 +950,7 @@ color: black;
       </div>
 
       <div class="price-card popular">
-        <div class="price-title"><h3>🌎 <br> 55+ Brand Owners Already Onboard</h3>
+        <div class="price-title"><h3> <div style="font-size: 40px;">🌎</div>  55+ Brand Owners Already Onboard</h3>
           <!-- <span class="pill">Most popular</span> -->
         </div>
         <div class="period">This model has been designed to scale fast — Roadmap available</div>
@@ -837,7 +965,7 @@ color: black;
   
 
          <div class="price-card">
-        <div class="price-title"><h3>🥹 <br> Not for Everyone</h3>
+        <div class="price-title"><h3>  <div style="font-size: 40px;">🥹</div>  Not for Everyone</h3>
           <!-- <span class="pill">Best to try</span> -->
         </div>
 
@@ -906,7 +1034,7 @@ color: black;
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="section container">
+  <section id="faq" class="section container" style="padding-bottom: 60px;">
     <h2>📘 Frequently Asked Questions</h2>
     <div class="faq">
       <div class="faq-item">
@@ -972,7 +1100,7 @@ color: black;
   <footer>
     <div class="container footer-grid">
       <div>
-        <div class="brand"><span class="logo"></span><span>Iris<span style="color:var(--primary)">.AI</span></span></div>
+        <div class="brand"><span class="logo"><img src="./logo.png" alt=""></span><span>Iris<span style="color:var(--primary)">.Analyst</span></span></div>
         <p class="small mt-20">Made with ❤️ in India. © <span id="year"></span> Iris Labs.</p>
       </div>
       <div>
