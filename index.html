@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iris.AI — Create Stunning AI Art in Seconds</title>
+  <meta name="description" content="Generate breathtaking images with AI. Fast, simple, and powerful. Try free—no credit card needed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --bg-soft: #111218;
+      --text: #e9eef7;
+      --text-dim: #b3b9c6;
+      --card: #12131a;
+      --stroke: #232532;
+      --primary: #ff7a18; /* orange accent */
+      --primary-2: #ffb357;
+      --glass: rgba(255, 255, 255, 0.06);
+      --success: #33d69f;
+      --warning: #ffd166;
+      --danger: #ff5a7a;
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --shadow-1: 0 10px 30px rgba(0,0,0,.35);
+      --shadow-2: 0 30px 80px rgba(0,0,0,.45);
+    }
+
+    /* Animation keyframes */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255,122,24,.3); }
+      50% { box-shadow: 0 0 40px rgba(255,122,24,.6); }
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-30px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(30px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @keyframes imageLoad {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; 
+      background: 
+        radial-gradient(1200px 600px at 80% -10%, rgba(255,122,24,.25), transparent 50%),
+        radial-gradient(800px 400px at -10% 10%, rgba(255,179,87,.18), transparent 45%),
+        linear-gradient(135deg, #0b0b0f 0%, #111218 50%, #0b0b0f 100%);
+      color: var(--text); 
+      font-family: Poppins, Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated background elements */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,122,24,0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-orb:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .floating-orb:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .floating-orb:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      top: 30%;
+      right: 20%;
+      animation-delay: 4s;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .particle:nth-child(4) { top: 20%; left: 15%; animation-delay: 1s; }
+    .particle:nth-child(5) { top: 70%; left: 80%; animation-delay: 3s; }
+    .particle:nth-child(6) { top: 40%; left: 70%; animation-delay: 2s; }
+    .particle:nth-child(7) { top: 80%; left: 30%; animation-delay: 4s; }
+    .particle:nth-child(8) { top: 15%; left: 60%; animation-delay: 0.5s; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* Container */
+    .container { width: min(1200px, 92vw); margin-inline: auto; }
+
+    /* Navbar */
+    .nav {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px);
+      background: linear-gradient( to bottom, rgba(11,11,15,.9), rgba(11,11,15,.65) );
+      border-bottom: 1px solid var(--stroke);
+      animation: slideInUp 0.8s ease-out;
+    }
+    .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+    .brand { display:flex; align-items:center; gap: 10px; font-weight: 700; letter-spacing:.2px; }
+    .logo {
+      width: 34px; height: 34px; border-radius: 10px; position: relative; overflow: hidden; background: #1c1d27;
+      box-shadow: inset 0 0 0 1px #2a2b38, 0 8px 22px rgba(255,122,24,.2);
+      animation: pulse 3s ease-in-out infinite;
+    }
+    .logo::before, .logo::after { content:""; position:absolute; inset:0; }
+    .logo::before { background: conic-gradient(from 210deg, var(--primary), #ff8f3f, #f7f0, transparent 60%); filter: blur(10px); }
+    .logo::after { background: radial-gradient(60% 60% at 70% 30%, rgba(255,255,255,.15), transparent 65%); }
+    .brand span { font-size: 1.05rem; }
+
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a { color: var(--text-dim); font-weight: 500; padding: 8px 10px; border-radius: 10px; transition: .2s ease; }
+    .nav-links a:hover { color: var(--text); background: var(--glass); }
+
+    .cta-btn { 
+      background: linear-gradient(135deg, var(--primary), var(--primary-2)); 
+      color: #0b0b0f; 
+      font-weight: 700; 
+      padding: 10px 16px; 
+      border-radius: 999px; 
+      border: 0; 
+      cursor: pointer; 
+      box-shadow: 0 10px 30px rgba(255,122,24,.35); 
+      transition: all .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    .cta-btn:hover::before {
+      left: 100%;
+    }
+    .cta-btn:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 15px 40px rgba(255,122,24,.5);
+      animation: glow 2s ease-in-out infinite;
+    }
+    .cta-btn:active { transform: translateY(1px); }
+
+    .menu-toggle { display: none; background: none; border: 1px solid var(--stroke); color: var(--text); border-radius: 10px; padding: 8px 10px; }
+
+    @media (max-width: 840px) {
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 60px; left: 4vw; right: 4vw; padding: 14px; background: #0f1016; border: 1px solid var(--stroke); border-radius: 16px; box-shadow: var(--shadow-2); }
+      .nav-links.open { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    }
+
+    /* Hero */
+    .hero { 
+      padding: 72px 0 48px; 
+      text-align: center; 
+      animation: fadeIn 1s ease-out;
+    }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; border: 1px solid #2b2d3b; background: rgba(255,255,255,.03); color: var(--text-dim); font-size: 12px; }
+    .spark { 
+      width: 8px; 
+      height: 8px; 
+      border-radius: 50%; 
+      background: var(--primary); 
+      box-shadow: 0 0 14px var(--primary);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero h1 { 
+      font-size: clamp(2.2rem, 4.8vw, 4rem); 
+      line-height: 1.1; 
+      margin: 16px auto 14px; 
+      font-weight: 800; 
+      letter-spacing: .3px;
+      animation: slideInUp 1s ease-out 0.3s both;
+    }
+    .hero p { 
+      color: var(--text-dim); 
+      font-size: clamp(1rem, 1.8vw, 1.15rem); 
+      margin: 0 auto 28px; 
+      max-width: 760px;
+      animation: slideInUp 1s ease-out 0.6s both;
+    }
+
+    .hero-cta { 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      gap: 12px; 
+      flex-wrap: wrap;
+      animation: slideInUp 1s ease-out 0.9s both;
+    }
+    .btn-secondary { padding: 10px 16px; border-radius: 999px; border: 1px solid var(--stroke); background: #141520; color: var(--text); font-weight: 600; }
+
+    .hero-media { 
+      margin: 36px auto 0; 
+      width: min(1100px, 96%); 
+      border-radius: var(--radius-xl); 
+      padding: 14px; 
+      background: linear-gradient(180deg, rgba(255,122,24,.12), rgba(255,122,24,.03) 50%, transparent), #0e0f15; 
+      border: 1px solid var(--stroke); 
+      box-shadow: var(--shadow-2);
+      animation: slideInUp 1s ease-out 1.2s both;
+      transition: transform 0.3s ease;
+    }
+    .hero-media:hover {
+      transform: translateY(-5px);
+    }
+    .fake-window { border-radius: 14px; background: #0c0d13; border: 1px solid #26283a; overflow: hidden; position: relative; }
+    .window-bar { display: flex; align-items: center; gap: 8px; padding: 10px; background: #0e0f16; border-bottom: 1px solid #1f2130; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #2b2d3b; }
+    .canvas { 
+      aspect-ratio: 16/8.8; 
+      background:
+        radial-gradient(70% 120% at 70% 40%, rgba(255,122,24,.25), transparent 52%),
+        radial-gradient(80% 140% at 5% 20%, rgba(255,179,87,.18), transparent 40%),
+        conic-gradient(from 45deg at 55% 40%, rgba(255,255,255,.15), rgba(255,255,255,0) 20% 60%, rgba(255,255,255,.15) 80% 100%),
+        linear-gradient(135deg, #151729, #0f111b);
+      position: relative; 
+      display: grid; 
+      place-items: center;
+      overflow: hidden;
+    }
+    .canvas::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255,122,24,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,179,87,0.1) 0%, transparent 50%);
+      animation: float 8s ease-in-out infinite;
+    }
+    .canvas .demo-text { text-align:center; max-width: 90%; font-weight: 600; color: #e8ecf6; letter-spacing: .2px; }
+
+    .trust { margin-top: 18px; color: var(--text-dim); font-size: 14px; }
+
+    /* Features */
+    .section { padding: 70px 0; }
+    .section h2 { text-align: center; font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin: 0 0 14px; }
+    .section p.lead { text-align: center; margin: 0 auto 42px; color: var(--text-dim); max-width: 780px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
+
+    .card { 
+      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent); 
+      border: 1px solid var(--stroke); 
+      border-radius: var(--radius-lg); 
+      padding: 18px; 
+      box-shadow: var(--shadow-1);
+      transition: all 0.3s ease;
+      animation: fadeIn 0.8s ease-out;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+      border-color: rgba(255,122,24,0.3);
+    }
+    .icon { 
+      width: 46px; 
+      height: 46px; 
+      border-radius: 12px; 
+      display:grid; 
+      place-items:center; 
+      background: #171825; 
+      border: 1px solid #2a2c3a; 
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+    .icon:hover {
+      transform: scale(1.1) rotate(5deg);
+      background: linear-gradient(135deg, #171825, #1a1c2a);
+      border-color: var(--primary);
+    }
+    .icon .emoji { font-size: 22px; }
+    .card h3 { margin: 6px 0 6px; font-size: 1.1rem; }
+    .card p { margin: 0; color: var(--text-dim); }
+
+    /* Gallery */
+    .gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .tile { 
+      position: relative; 
+      border-radius: 16px; 
+      overflow: hidden; 
+      border: 1px solid #2a2b38; 
+      background: #0f111a; 
+      aspect-ratio: 1/1;
+      transition: all 0.3s ease;
+      animation: fadeIn 0.8s ease-out;
+      cursor: pointer;
+    }
+    .tile:hover {
+      transform: scale(1.05);
+      border-color: var(--primary);
+      box-shadow: 0 15px 30px rgba(255,122,24,0.2);
+    }
+    .tile img {
+      transition: all 0.3s ease;
+    }
+    .tile:hover img {
+      transform: scale(1.1);
+    }
+    .tile img {
+      animation: imageLoad 0.6s ease-out;
+    }
+    .tile.loading {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    .tile--wide { grid-column: span 6; }
+    .tile--tall { grid-column: span 3; aspect-ratio: 3/4; }
+    .tile--full { grid-column: span 12; aspect-ratio: 16/6; }
+    @media (max-width: 900px){
+      .tile--wide, .tile--tall, .tile--full { grid-column: span 12; }
+    }
+    /* Image overlay for better text readability */
+    .tile::after { 
+      content:""; 
+      position:absolute; 
+      inset:0; 
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+      pointer-events: none;
+    }
+    .tag { 
+      position:absolute; 
+      top:10px; 
+      left:10px; 
+      font-size: 12px; 
+      background: rgba(0,0,0,.7); 
+      border: 1px solid rgba(255,122,24,0.3); 
+      padding: 6px 12px; 
+      border-radius: 999px; 
+      color: #ffffff; 
+      backdrop-filter: blur(10px);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+    .tile:hover .tag {
+      background: rgba(255,122,24,0.9);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* How it works */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 900px){ .steps { grid-template-columns: 1fr; } }
+    .step { 
+      background: #10121b; 
+      border: 1px solid var(--stroke); 
+      border-radius: 16px; 
+      padding: 16px; 
+      counter-increment: step; 
+      position: relative;
+      transition: all 0.3s ease;
+      animation: slideInUp 0.8s ease-out;
+    }
+    .step:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      background: linear-gradient(180deg, #10121b, #12141d);
+    }
+    .step::before { content: counter(step); position: absolute; top: -12px; left: -12px; width: 36px; height: 36px; border-radius: 12px; display:grid; place-items:center; background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #0b0b0f; font-weight: 800; box-shadow: 0 10px 30px rgba(255,122,24,.35); }
+
+    /* Pricing */
+    .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+    @media (max-width: 1000px){ .pricing { grid-template-columns: 1fr; } }
+    .price-card { 
+      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent); 
+      border: 1px solid var(--stroke); 
+      border-radius: 20px; 
+      padding: 20px; 
+      position: relative; 
+      overflow: hidden;
+      transition: all 0.3s ease;
+      animation: slideInUp 0.8s ease-out;
+    }
+    .price-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,.3);
+    }
+    .price-card.popular { outline: 2px solid var(--primary); box-shadow: 0 0 0 6px rgba(255,122,24,.12); }
+    .price-title { display:flex; align-items:center; justify-content: space-between; gap: 12px; }
+    .pill { font-size: 12px; background: rgba(255,122,24,.14); color: var(--primary-2); border: 1px solid rgba(255,122,24,.35); padding: 6px 10px; border-radius: 999px; }
+    .price { font-size: 34px; font-weight: 800; margin: 8px 0; }
+    .period { color: var(--text-dim); font-size: 14px; font-weight: 500; }
+    .ul { list-style: none; padding: 0; margin: 16px 0 20px; }
+    .ul li { display:flex; align-items:flex-start; gap: 10px; margin: 8px 0; color: var(--text-dim); }
+    .check { width: 18px; height: 18px; border-radius: 6px; background: rgba(51,214,159,.18); border: 1px solid rgba(51,214,159,.6); display:grid; place-items:center; font-size: 12px; color: #9cf0cf; }
+
+    /* Testimonials */
+    .testi { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 1000px){ .testi { grid-template-columns: 1fr; } }
+    .quote { 
+      background: #0f1119; 
+      border: 1px solid var(--stroke); 
+      border-radius: 18px; 
+      padding: 16px; 
+      position: relative;
+      transition: all 0.3s ease;
+      animation: slideInUp 0.8s ease-out;
+    }
+    .quote:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      background: linear-gradient(180deg, #0f1119, #11131b);
+    }
+    .quote p { margin: 0 0 12px; color: var(--text-dim); }
+    .avatar { display:flex; align-items:center; gap: 10px; }
+    .avatar .bubble { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1f2233, #141622); border: 1px solid #2c2e3b; }
+
+    /* FAQ */
+    .faq { max-width: 900px; margin: 0 auto; }
+    .faq-item { border: 1px solid var(--stroke); border-radius: 16px; background: #0f1119; margin-bottom: 12px; overflow: hidden; }
+    .faq-q { display:flex; align-items:center; justify-content: space-between; gap: 10px; padding: 14px; cursor: pointer; }
+    .faq-q h4 { margin: 0; font-size: 1rem; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; padding: 0 14px; }
+    .faq-a.open { padding: 0 14px 14px; }
+    .faq-a p { margin: 10px 0 0; color: var(--text-dim); }
+
+    /* Footer */
+    footer { padding: 38px 0 80px; color: var(--text-dim); border-top: 1px solid var(--stroke); background: #0b0c12; }
+    .footer-grid { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 18px; }
+    @media (max-width: 1000px){ .footer-grid { grid-template-columns: 1fr; } }
+    .small { font-size: 13px; color: #9aa2b4; }
+
+    /* Utility */
+    .center { text-align:center; }
+    .mt-20 { margin-top: 20px; }
+    .mt-30 { margin-top: 30px; }
+    .mb-0 { margin-bottom: 0; }
+    .mute { color: var(--text-dim); }
+    .row { display:flex; gap: 10px; flex-wrap: wrap; align-items:center; }
+    .right { margin-left: auto; }
+    .chip { font-size: 12px; padding: 6px 10px; border: 1px dashed #2e3142; border-radius: 999px; background: rgba(255,255,255,.03); }
+
+    /* Nice focus */
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="bg-animation">
+    <div class="floating-orb"></div>
+    <div class="floating-orb"></div>
+    <div class="floating-orb"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="container nav-row">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Iris<span style="color:var(--primary)">.AI</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#" class="chip">Made in 🇮🇳</a>
+        <a href="#" class="cta-btn">Try Free</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero container">
+    <div class="badge"><span class="spark"></span> New: Ultra model v3 — 30% faster</div>
+    <h1>AI se banao next‑level art — seconds mein ✨</h1>
+    <p>Text prompt likho aur turant hi HD images generate karo. Zero learning curve, blazing fast renders, aur studio‑grade results. 50+ styles. Commercial use included.</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="cta-btn">Start Free</a>
+      <a href="#gallery" class="btn-secondary">See Examples</a>
+    </div>
+
+    <div class="hero-media mt-20">
+      <div class="fake-window">
+        <div class="window-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="small" style="margin-left:10px;">Iris Studio</span>
+        </div>
+        <div class="canvas">
+          <div class="demo-text">
+            <div class="chip" style="animation: pulse 2s ease-in-out infinite;">Iris Studio Demo</div>
+            <h3 style="margin:.4rem 0 0">“a neon cyberpunk city street at night, cinematic, ultra detailed”</h3>
+            <p class="mute" style="margin-top:8px">Instant preview • Upscale 4x • Remove background • Variations</p>
+          </div>
+          <!-- Animated processing indicator -->
+          <div style="position: absolute; bottom: 20px; right: 20px; display: flex; gap: 8px;">
+            <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite;"></div>
+            <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite 0.2s;"></div>
+            <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite 0.4s;"></div>
+          </div>
+        </div>
+      </div>
+      <p class="trust">Watch Iris Studio in action • Join 50,000+ creators & developers • No credit card needed</p>
+    </div>
+  </header>
+
+  <!-- Iris Studio Demo Video -->
+  <section class="section container">
+    <h2>Watch Iris Studio in Action</h2>
+    <p class="lead">See how Iris Studio transforms your creative workflow with AI-powered tools.</p>
+    <div style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-2); border: 1px solid var(--stroke);">
+      <div style="position: relative; width: 100%; aspect-ratio: 16/9;">
+        <!-- <iframe 
+          src="https://youtu.be/pK1Dmqw9rxI?si=aX4TGvjXDp4ny_Cb" 
+          style="width: 100%; height: 100%; border: none;"
+          title="Iris Studio Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe> -->
+        <iframe 
+  style="width: 100%; height: 100%; border: none;" 
+  src="https://www.youtube.com/embed/pm5RdRCI1BI?rel=0&modestbranding=1&controls=0&showinfo=0" 
+  title="Iris Studio Demo" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
+
+
+        <!-- <iframe       style="width: 100%; height: 100%; border: none;"
+        title="Iris Studio Demo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen src="https://www.youtube.com/embed/pm5RdRCI1BI?si=T-WTeyVSHCqWuw9e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+      <p class="mute">Experience the future of AI-powered creativity with Iris Studio</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section container">
+    <h2>Why creators love Iris</h2>
+    <p class="lead">Simple UI, powerful controls. Studio‑quality outputs bina complex settings ke. Perfect for designers, marketers, aur indie devs.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon"><span class="emoji">⚡</span></div>
+        <h3>Fast & affordable</h3>
+        <p>Render in ~5s. Pay as you go ya monthly plans. Serverless API for scale.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><span class="emoji">🧠</span></div>
+        <h3>50+ smart styles</h3>
+        <p>Realistic, anime, isometric, product mockups, logo ideation & more.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><span class="emoji">🖌️</span></div>
+        <h3>Edit anything</h3>
+        <p>Background removal, inpainting, upscaling 4×, prompt variations—sab built‑in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section container">
+    <h2>Gallery</h2>
+    <p class="lead">Explore stunning AI-generated artwork from our community. Each piece showcases the power of Iris.AI.</p>
+    <div class="gallery">
+      <div class="tile tile--tall" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop&crop=face" alt="AI Portrait" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+        <span class="tag">Portrait</span>
+      </div>
+      <div class="tile tile--tall" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=600&fit=crop" alt="Product Mockup" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+        <span class="tag">Product</span>
+      </div>
+      <div class="tile tile--tall" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=600&fit=crop" alt="Logo Design" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+        <span class="tag">Logo</span>
+      </div>
+      <div class="tile tile--wide" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop" alt="Landscape" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+        <span class="tag">Landscape</span>
+      </div>
+      <div class="tile tile--wide" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=400&fit=crop" alt="Concept Art" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+        <span class="tag">Concept Art</span>
+      </div>
+      <div class="tile tile--full" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=400&fit=crop" alt="Cinematic Scene" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+        <span class="tag">Cinematic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="section container">
+    <h2>Kaise kaam karta hai</h2>
+    <p class="lead">Teen simple steps aur bas—professional results.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>1. Prompt likho</h3>
+        <p>Style, subject aur mood define karo. Hindi/English dono chalta hai.</p>
+      </div>
+      <div class="step">
+        <h3>2. Generate & tweak</h3>
+        <p>Seconds mein result. Variations try karo, seed aur guidance tune karo.</p>
+      </div>
+      <div class="step">
+        <h3>3. Export in HD</h3>
+        <p>PNG/JPG/WebP. Background remove karo ya 4× upscale karke download.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section container">
+    <h2>Simple, transparent pricing</h2>
+    <p class="lead">Start free. Jab chahein upgrade karo. All plans include commercial license.</p>
+    <div class="pricing">
+      <div class="price-card">
+        <div class="price-title"><h3>Free</h3><span class="pill">Best to try</span></div>
+        <div class="price">₹0 <span class="period">/ forever</span></div>
+        <ul class="ul">
+          <li><span class="check">✓</span><span>50 generations / month</span></li>
+          <li><span class="check">✓</span><span>Basic styles & upscaler</span></li>
+          <li><span class="check">✓</span><span>Community gallery</span></li>
+        </ul>
+        <a class="cta-btn" href="#">Start Free</a>
+      </div>
+      <div class="price-card popular">
+        <div class="price-title"><h3>Creator</h3><span class="pill">Most popular</span></div>
+        <div class="price">₹499 <span class="period">/ month</span></div>
+        <ul class="ul">
+          <li><span class="check">✓</span><span>1,500 generations</span></li>
+          <li><span class="check">✓</span><span>All styles + 4× upscale</span></li>
+          <li><span class="check">✓</span><span>Priority queue & API</span></li>
+        </ul>
+        <a class="cta-btn" href="#">Upgrade</a>
+      </div>
+      <div class="price-card">
+        <div class="price-title"><h3>Studio</h3><span class="pill">Teams</span></div>
+        <div class="price">₹1,999 <span class="period">/ month</span></div>
+        <ul class="ul">
+          <li><span class="check">✓</span><span>Unlimited users</span></li>
+          <li><span class="check">✓</span><span>Brand styles & SSO</span></li>
+          <li><span class="check">✓</span><span>Priority support & SLA</span></li>
+        </ul>
+        <a class="cta-btn" href="#">Contact Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section container">
+    <h2>What people say</h2>
+    <p class="lead">Designers, founders, marketers—sab ke liye kaam ka.</p>
+    <div class="testi">
+      <div class="quote">
+        <p>“Campaign creatives 10× jaldi ho gaye. Quality bhi next level.”</p>
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Aarav S." style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid #2c2e3b;">
+          <div><strong>Aarav S.</strong><div class="small">Growth Marketer</div></div>
+        </div>
+      </div>
+      <div class="quote">
+        <p>“Indie game ke liye concept art 24 ghante mein ready.”</p>
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Nisha T." style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid #2c2e3b;">
+          <div><strong>Nisha T.</strong><div class="small">Game Dev</div></div>
+        </div>
+      </div>
+      <div class="quote">
+        <p>“Product mockups aur lifestyle shots bina studio ke—life saver.”</p>
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Rohit P." style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid #2c2e3b;">
+          <div><strong>Rohit P.</strong><div class="small">D2C Founder</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section container">
+    <h2>FAQs</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">
+          <h4>Kya main results commercially use kar sakta/ti hoon?</h4>
+          <span>+</span>
+        </div>
+        <div class="faq-a"><p>Haan. Paid plans par commercial license included hai. Free plan par non‑commercial use allowed.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <h4>Background remove / upscale kaise karein?</h4>
+          <span>+</span>
+        </div>
+        <div class="faq-a"><p>Generate karne ke baad edit tools se 1‑click background removal aur 4× upscaling available hai.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <h4>API available hai?</h4>
+          <span>+</span>
+        </div>
+        <div class="faq-a"><p>Haan, Creator/Studio plans par REST API aur serverless webhooks milte hain.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="logo"></span><span>Iris<span style="color:var(--primary)">.AI</span></span></div>
+        <p class="small mt-20">Made with ❤️ in India. © <span id="year"></span> Iris Labs.</p>
+      </div>
+      <div>
+        <strong>Product</strong>
+        <p class="small">Features<br>Pricing<br>Changelog<br>Status</p>
+      </div>
+      <div>
+        <strong>Company</strong>
+        <p class="small">About<br>Careers<br>Press<br>Contact</p>
+      </div>
+      <div>
+        <strong>Legal</strong>
+        <p class="small">Terms<br>Privacy<br>Refunds<br>Licensing</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach((item) => {
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      q.addEventListener('click', () => {
+        const isOpen = a.style.maxHeight && a.style.maxHeight !== '0px';
+        document.querySelectorAll('.faq-a').forEach(el => { el.style.maxHeight = null; el.classList.remove('open'); });
+        if (!isOpen) { a.style.maxHeight = a.scrollHeight + 'px'; a.classList.add('open'); }
+      });
+    });
+
+    // Scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.card, .tile, .step, .price-card, .quote').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Parallax effect for background elements
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.floating-orb, .particle');
+      
+      parallaxElements.forEach((el, index) => {
+        const speed = 0.5 + (index * 0.1);
+        el.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
+
+    // Add bounce animation to CTA buttons on hover
+    document.querySelectorAll('.cta-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        btn.style.animation = 'bounce 0.6s ease';
+      });
+      btn.addEventListener('animationend', () => {
+        btn.style.animation = '';
+      });
+    });
+
+    // Gallery image loading and interactions
+    document.querySelectorAll('.tile img').forEach(img => {
+      const tile = img.parentElement;
+      tile.classList.add('loading');
+      
+      img.addEventListener('load', () => {
+        tile.classList.remove('loading');
+      });
+      
+      img.addEventListener('error', () => {
+        tile.classList.remove('loading');
+        // Fallback to gradient background if image fails to load
+        tile.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+      });
+    });
+
+    // Gallery click handlers
+    document.querySelectorAll('.tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        const tag = tile.querySelector('.tag').textContent;
+        const img = tile.querySelector('img');
+        if (img) {
+          // Create a lightbox effect (simple alert for now)
+          alert(`Viewing ${tag} artwork. In a real app, this would open a lightbox or modal.`);
+        }
+      });
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
