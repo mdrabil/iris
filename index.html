@@ -16,8 +16,8 @@
       --text-dim: #b3b9c6;
       --card: #12131a;
       --stroke: #232532;
-      --primary: #ff7a18; /* orange accent */
-      --primary-2: #ffb357;
+      --primary: gold; /* orange accent */
+      --primary-2: gold;
       --glass: rgba(255, 255, 255, 0.06);
       --success: #33d69f;
       --warning: #ffd166;
@@ -41,8 +41,8 @@
     }
 
     @keyframes glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(255,122,24,.3); }
-      50% { box-shadow: 0 0 40px rgba(255,122,24,.6); }
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 220, 24, 0.544); }
+      50% { box-shadow: 0 0 40px rgba(254, 203, 36, 0.6); }
     }
 
     @keyframes slideInUp {
@@ -95,8 +95,8 @@
     body {
       margin: 0; 
       background: 
-        radial-gradient(1200px 600px at 80% -10%, rgba(255,122,24,.25), transparent 50%),
-        radial-gradient(800px 400px at -10% 10%, rgba(255,179,87,.18), transparent 45%),
+        radial-gradient(1200px 600px at 80% -10%, rgba(255, 201, 24, 0.25), transparent 50%),
+        radial-gradient(800px 400px at -10% 10%, rgba(241, 211, 37, 0.18), transparent 45%),
         linear-gradient(135deg, #0b0b0f 0%, #111218 50%, #0b0b0f 100%);
       color: var(--text); 
       font-family: Poppins, Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
@@ -521,6 +521,14 @@
 
     /* Nice focus */
     :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 8px; }
+
+
+     #try-free{
+color: black;
+     }
+     #try-free:hover{
+      color: white;
+     }
   </style>
 </head>
 <body>
@@ -551,7 +559,7 @@
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="#" class="chip">Made in 🇮🇳</a>
-        <a href="#" class="cta-btn">Try Free</a>
+        <a href="#" class="cta-btn" id="try-free">Try Free</a>
       </div>
     </div>
   </nav>
