@@ -249,6 +249,17 @@
       .menu-toggle { display: block; }
       .nav-links { display: none; position: absolute; top: 60px; left: 4vw; right: 4vw; padding: 14px; background: #0f1016; border: 1px solid var(--stroke); border-radius: 16px; box-shadow: var(--shadow-2); }
       .nav-links.open { display: grid; grid-template-columns: 1fr; gap: 10px; }
+   
+.cta-btn {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+   .section h2 { text-align: center;
+         font-size: 0.8rem;
+         /* font-size: 3.4rem; */
+          margin: 0 0 14px; }
+     
     }
 
     /* Hero */
@@ -278,7 +289,7 @@
     .hero p { 
       color: var(--text-dim); 
       font-size: clamp(1.5rem, 1.8vw, 1.15rem); 
-      margin: 0 auto 28px; 
+      margin: 0 auto ; 
       max-width: 760px;
       animation: slideInUp 1s ease-out 0.6s both;
     }
@@ -339,15 +350,16 @@
     .trust { margin-top: 18px; color: var(--text-dim); font-size: 14px; }
 
     /* Features */
-    .section { padding: 40px 0 0 0; }
+    .section { padding: 0px 0px 40px 0px; }
     .section h2 { text-align: center; 
-      /* font-size: clamp(4rem, 2.6vw, 2.2rem); */
-      font-size: 3.4rem;
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      /* font-size: 3.4rem; */
        margin: 0 0 14px; }
     .section p.lead { text-align: center; margin: 0 auto 42px; color: var(--text-dim); max-width: 780px; font-size: 20px; font-weight: bold;}
 
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; }
+   }
 
     .card { 
       /* background: linear-gradient(180deg, rgba(255,255,255,.04), transparent);  */
@@ -358,11 +370,13 @@
       transition: all 0.3s ease;
       animation: fadeIn 0.8s ease-out;
     }
-       .section h2 { text-align: center;
-         /* font-size: clamp(1.6rem, 2.6vw, 2.2rem); */
+       /* .section h2 { text-align: center;
+         font-size: clamp(3.6rem, 2.6vw, 2.2rem);
          font-size: 3.4rem;
-          margin: 0 0 14px; }
-        .heading-point { 
+          margin: 0 0 14px; } */
+     
+     
+          .heading-point { 
       /* background: linear-gradient(180deg, rgba(255,255,255,.04), transparent);  */
       border: 1px solid var(--stroke); 
       border-radius: var(--radius-lg); 
@@ -371,6 +385,32 @@
       transition: all 0.3s ease;
       animation: fadeIn 0.8s ease-out;
     }
+
+  .heading-point-2 { 
+  border: 1px solid var(--stroke); 
+  border-radius: 8px; 
+  box-shadow: var(--shadow-1);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.8s ease-out;
+  background-color: white;
+  color: black;
+  padding: 0 20px; 
+  border-bottom: 3px solid red;
+  text-align: center;
+  
+  /* ✅ Centering fix */
+  display: table;
+  margin: 0 auto;
+  animation: moveX 2s ease-in-out infinite;
+  font-size: 10px;
+}
+
+.heading-point-2 h2{
+  font-size: 50px;
+
+}
+
+
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(0,0,0,.4);
@@ -472,6 +512,14 @@
     .tile--full { grid-column: span 12; aspect-ratio: 16/6; }
     @media (max-width: 900px){
       .tile--wide, .tile--tall, .tile--full { grid-column: span 12; }
+          .hero h1 { 
+      font-size: clamp(2.2rem, 4.8vw, 4rem); 
+      line-height: 1.1; 
+      margin: 16px auto 14px; 
+      font-weight: 800; 
+      letter-spacing: .3px;
+      animation: slideInUp 1s ease-out 0.3s both;
+    }
     }
 
        .card-list-table span{
@@ -662,14 +710,14 @@ color: black;
   </div>
 
 
-<!-- <div class="fixed-bottom-text">
+<div class="fixed-bottom-text">
   <div class="bottom-left">
-    <h3>Start Earning <span style="color:red;">₹1 Cr</span> in One Day</h3>
+    <h3>Start Earning <span style="color:red;">From </span>  Day 1</h3>
   </div>
   <div class="bottom-right">
     <a href="#" class="cta-btn">APPLY NOW</a>
   </div>
-</div> -->
+</div>
 
 
 <!-- Overlay background -->
@@ -728,9 +776,9 @@ color: black;
 
   <!-- Iris Studio Demo Video -->
 
-  done wala hai 
+  <!-- done wala hai  -->
   <section  class="section container">
-    <h2>📹 Watch Before You Apply</h2>
+    <!-- <h2>📹 Watch Before You Apply</h2>
     <p class="lead">Before applying, understand how this business works and what kind of impact it creates. This is a serious opportunity meant for serious action-takers.</p>
     <div style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-2); border: 1px solid var(--stroke);">
       <div style="position: relative; width: 100%; aspect-ratio: 16/9;">
@@ -744,7 +792,7 @@ color: black;
   allowfullscreen>
 </iframe>
       </div>
-    </div>
+    </div> -->
     <!-- <div style="text-align: center; margin-top: 20px;">
  <div  style="display: flex;justify-content: space-around;flex-wrap: wrap; align-items: center; gap: 10px;">     
   <p class="mute">
@@ -760,9 +808,132 @@ color: black;
   </section>
 
 
-  done wala hai 
+  <!-- done wala  -->
 
 
+<!-- <section class="section container">
+  <h2>📹 Watch Before You Apply</h2>
+  <p class="lead">Before applying, understand how this business works and what kind of impact it creates. This is a serious opportunity meant for serious action-takers.</p>
+  
+  <div style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-2); border: 1px solid var(--stroke);">
+    <div style="position: relative; width: 100%; aspect-ratio: 16/9;">
+  
+      <div id="player"   style="width: 100%; height: 100%; border: none;" ></div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section container" >
+
+    <h2 class="heading-point-2" style="margin:0px auto 20px auto;">Watch Before You Apply</h2>
+
+  <p class="lead">Before applying, understand how this business works and what kind of impact it creates. This is a serious opportunity meant for serious action-takers.</p>
+  
+  <div style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-2); border: 1px solid var(--stroke);">
+    <div style="position: relative; width: 100%; aspect-ratio: 16/9;">
+      <!-- YouTube player container -->
+      <div id="player" style="width: 100%; height: 100%;"></div>
+    </div>
+  </div>
+
+  <!-- Custom Controls -->
+  <!-- <div style="text-align:center; margin-top:10px;">
+    <button onclick="playVideo()">▶ Play</button>
+    <button onclick="pauseVideo()">⏸ Pause</button>
+  </div> -->
+</section>
+
+<!-- Load YouTube API -->
+
+<!-- <script>
+  let player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player("player", {
+      videoId: "apE6WvCCjIE", // Your Video ID
+      playerVars: {
+        rel: 0,
+        modestbranding: 1,
+        controls: 1,
+        showinfo: 0
+      },
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+ 
+  function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) {
+  
+      document.getElementById("popupForm").style.display = "flex";
+    }
+  }
+
+
+</script> -->
+
+<!-- https://youtu.be/7o_fRK-66bY?si=ZXrMoy3-fSNUVMoE -->
+<!-- Load YouTube API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let player;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player("player", {
+      videoId: "7o_fRK-66bY", // Your Video ID
+      playerVars: {
+        rel: 0,
+        modestbranding: 1,
+        controls: 0,   // disable youtube controls (no skip, no seek bar)
+        disablekb: 1,  // disable keyboard shortcuts
+        fs: 0,         // disable fullscreen button
+      },
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  // Detect when video ends
+  function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) {
+      document.getElementById("popupForm").style.display = "flex";
+    }
+  }
+
+  // Custom play/pause buttons
+  function playVideo() {
+    player.playVideo();
+  }
+  function pauseVideo() {
+    player.pauseVideo();
+  }
+</script>
+
+<!-- <section class="section container">
+  <h2>📹 Watch Before You Apply</h2>
+  <p class="lead">Before applying, understand how this business works and what kind of impact it creates. This is a serious opportunity meant for serious action-takers.</p>
+  
+  <div style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-2); border: 1px solid var(--stroke);">
+    <div style="position: relative; width: 100%; aspect-ratio: 16/9;">
+  
+      <div id="player" style="width: 100%; height: 100%;"></div>
+    </div>
+  </div>
+
+
+  <div style="text-align:center; margin-top:10px;">
+    <button onclick="playVideo()">▶ Play</button>
+    <button onclick="pauseVideo()">⏸ Pause</button>
+  </div>
+</section> -->
+
+<!-- Popup Form -->
+
+
+
+  
 
     <section id="how" class="section container">
 <div class="card" 
@@ -827,7 +998,7 @@ color: black;
                       <span class="check-cencel">✗ </span> Location-bound, long hours
                     </div>
                     </td>
-                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px;"><span class="check">✓</span> Work anytime, anywhere</td>
+                    <td style="padding: 10px; border: 1px solid #ddd; display: flex; align-items: center; gap: 10px; "><span class="check">✓</span> Work anytime, anywhere</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px; border: 1px solid #ddd;">Investment & Risk</td>
@@ -1009,7 +1180,7 @@ color: black;
 
 ]
   <!-- Testimonials -->
-  <section class="section container">
+  <!-- <section class="section container">
     <h2>What people say</h2>
     <p class="lead">👉 APPLY NOW (Only if you’ve watched the complete video above)</p>
     <div class="testi">
@@ -1035,10 +1206,10 @@ color: black;
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- FAQ -->
-  <section id="faq" class="section container" style="padding-bottom: 60px;">
+  <!-- <section id="faq" class="section container" style="padding-bottom: 60px;">
     <h2>📘 Frequently Asked Questions</h2>
     <div class="faq">
       <div class="faq-item">
@@ -1098,14 +1269,14 @@ color: black;
         <div class="faq-a"><p>Absolutely. You can grow through B2B partnerships, school and HR tie-ups, event stalls, digital marketing, and franchise models.</p></div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Footer -->
   <footer>
     <div class="">
       <div class="" style="display: flex;
-      align-items: center;justify-content: center; flex-direction: column;">
-        <div class="brand"><span class="logo"><img src="./logo.png" alt=""></span></span></div>
+      align-items: center;justify-content: center; flex-direction: column; padding-bottom: 100px;">
+        <div class=""><span class=""><img src="./logo.png" alt=""></span></span></div>
         <p class="small mt-20">Made with ❤️ in India. © <span id="year"></span> Iris Labs.</p>
       </div>
 

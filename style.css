@@ -1,11 +1,4 @@
-/* Container */
-/* .section.container {
-  padding: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-} */
 
-/* Flex Layout */
 
     .price-card-what { 
       background: linear-gradient(180deg, rgba(255,255,255,.04), transparent); 
@@ -193,21 +186,39 @@ padding-top: 20px;
 
 /* ✅ Responsive Design */
 @media (max-width: 768px) {
+
+
+.cta-btn {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+
   .fixed-bottom-text {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111218; /* dark bg */
+  border: 2px solid red;
+  border-bottom: none;
+  color: white;
+
+gap: 10px;
+  align-items: center;
+  /* flex-direction: column; */
+  padding: 20px;
+  box-shadow: 0 -3px 12px rgba(0,0,0,0.3);
+  z-index: 9999;
+
   }
 
   .fixed-bottom-text h3 {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
-  .cta-btn {
-    width: 100%;
-    font-size: 1rem;
-    padding: 12px;
-  }
+  
 }
 
 
@@ -222,6 +233,7 @@ padding-top: 20px;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  color: black;
 }
 
 /* Popup box */
@@ -263,13 +275,14 @@ padding-top: 20px;
 
 /* Submit button */
 .submit-btn {
-  background: red;
-  color: #fff;
+  background: gold;
+  color:black;
   border: none;
   padding: 12px;
-  border-radius: 999px;
+  border-radius: 9px;
+  
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
@@ -285,3 +298,20 @@ padding-top: 20px;
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
+
+
+@keyframes moveX {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+
+  /* table td:last-child,
+  table th:last-child {
+    background-color: #f2c445; 
+    font-weight: bold; 
+    border: 2px solid #4caf50; 
+    color: black;
+  } */
