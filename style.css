@@ -65,3 +65,223 @@ text-align: start;
     font-size: 1.1rem;
   }
 }
+
+
+
+.overlay-top-center {
+  /* margin-top: 20px; */
+  position: absolute;
+  top: 0%; /* half bahar */
+  left: 50%;
+  transform: translate(-50%,-50%);
+     background: radial-gradient(1200px 600px at 80% -10%, rgba(255, 201, 24, 0.25), transparent 50%), radial-gradient(800px 400px at -10% 10%, rgba(241, 211, 37, 0.18), transparent 45%), linear-gradient(135deg, #0b0b0f 0%, #111218 50%, #0b0b0f 100%);
+  padding: 0px 40px;
+  border-radius: 10px;
+  color:white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  white-space: nowrap;
+  border: 1px solid rgb(146, 52, 5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .overlay-top-center {
+    font-size: 1rem;
+    padding: 8px 15px;
+    top: -15px;
+  }
+
+    
+ .cta-btn { 
+  background: red; 
+  color: white; 
+  font-weight: 700; 
+  padding: 10px 16px; 
+  /* border-radius: 999px;  */
+  border: 0; 
+  cursor: pointer; 
+  box-shadow: 0 10px 30px rgba(255,122,24,.35); 
+  transition: all .3s ease;
+  position: relative;
+  font-size: 1rem;
+  /* overflow: hidden; */
+  display: inline-block;
+  animation: moveY 2s ease-in-out infinite;
+}
+       .section h2 { text-align: center;
+         font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+         /* font-size: 3.4rem; */
+          margin: 0 0 14px; }
+
+              .hero h1 { 
+      font-size: clamp(2.2rem, 4.8vw, 4rem); 
+      line-height: 1.1; 
+      margin: 16px auto 14px; 
+      font-weight: 800; 
+      letter-spacing: .3px;
+      animation: slideInUp 1s ease-out 0.3s both;
+    }
+}
+
+
+/* Text animation */
+.cta-btn span {
+  display: inline-block;
+}
+
+@keyframes moveY {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+.center-apply-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+padding-top: 20px;
+
+/* width: 100%; */
+}
+
+
+
+
+
+
+.fixed-bottom-text {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111218; /* dark bg */
+  border: 2px solid red;
+  border-bottom: none;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 100px;
+  box-shadow: 0 -3px 12px rgba(0,0,0,0.3);
+  z-index: 9999;
+}
+
+.fixed-bottom-text h3 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.cta-btn {
+  background: red;
+  color: white;
+  font-weight: 700;
+  padding: 14px 50px;
+  border-radius: 9px;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.5rem;
+  box-shadow: 0 6px 20px rgba(255,0,0,.35);
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+.cta-btn:hover {
+  background: darkred;
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+  .fixed-bottom-text {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .fixed-bottom-text h3 {
+    font-size: 1rem;
+  }
+
+  .cta-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+
+/* Overlay background */
+.fixed-open-popup-form {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); /* dark transparent bg */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Popup box */
+.popup-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  animation: popupFade 0.3s ease;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Input fields */
+.form-group {
+  margin: 12px 0;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Submit button */
+.submit-btn {
+  background: red;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 999px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: darkred;
+}
+
+/* Animation */
+@keyframes popupFade {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

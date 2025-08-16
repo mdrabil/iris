@@ -92,8 +92,9 @@
       to { opacity: 1; transform: scale(1); }
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
+    /* html, body { height: 100%; } */
+    body
+     {
       margin: 0; 
       background: 
         radial-gradient(1200px 600px at 80% -10%, rgba(255, 201, 24, 0.25), transparent 50%),
@@ -105,6 +106,20 @@
       position: relative;
       overflow-x: hidden;
     }
+/* body {
+  margin: 0; 
+  background: 
+    radial-gradient(1200px 600px at 80% -10%, rgba(255, 201, 24, 0.25), transparent 70%),
+    radial-gradient(800px 400px at -10% 20%, rgba(241, 211, 37, 0.18), transparent 65%),
+    linear-gradient(135deg, #0b0b0f 0%, #111218 50%, #0b0b0f 100%);
+  background-blend-mode: soft-light, overlay, normal; 
+  color: var(--text); 
+  font-family: Poppins, Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+} */
+
 
     /* Animated background elements */
     .bg-animation {
@@ -178,7 +193,7 @@
     .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
     .brand { display:flex; align-items:center; gap: 10px; font-weight: 700; letter-spacing:.2px; }
     .logo {
-      width: 34px; height: 34px; border-radius: 10px; position: relative; overflow: hidden; background: #1c1d27;
+      width: 100px; height: 100px; border-radius: 10px; position: relative; overflow: hidden; background: #1c1d27;
       box-shadow: inset 0 0 0 1px #2a2b38, 0 8px 22px rgba(255,122,24,.2);
       animation: pulse 3s ease-in-out infinite;
     }
@@ -192,8 +207,9 @@
     .nav-links a:hover { color: var(--text); background: var(--glass); }
 
     .cta-btn { 
-      background: linear-gradient(135deg, var(--primary), var(--primary-2)); 
-      color: #0b0b0f; 
+      background: red; 
+    
+      color: white; 
       font-weight: 700; 
       padding: 10px 16px; 
       border-radius: 999px; 
@@ -202,7 +218,10 @@
       box-shadow: 0 10px 30px rgba(255,122,24,.35); 
       transition: all .3s ease;
       position: relative;
+      font-size: 1.4rem;
       overflow: hidden;
+  animation: moveY 2s ease-in-out infinite;
+
     }
     .cta-btn::before {
       content: '';
@@ -234,7 +253,7 @@
 
     /* Hero */
     .hero { 
-      padding: 72px 0 48px; 
+      padding: 50px 0 0 0; 
       text-align: center; 
       animation: fadeIn 1s ease-out;
     }
@@ -249,7 +268,7 @@
     }
 
     .hero h1 { 
-      font-size: clamp(2.2rem, 4.8vw, 4rem); 
+      font-size: clamp(5.2rem, 4.8vw, 4rem); 
       line-height: 1.1; 
       margin: 16px auto 14px; 
       font-weight: 800; 
@@ -258,7 +277,7 @@
     }
     .hero p { 
       color: var(--text-dim); 
-      font-size: clamp(1rem, 1.8vw, 1.15rem); 
+      font-size: clamp(1.5rem, 1.8vw, 1.15rem); 
       margin: 0 auto 28px; 
       max-width: 760px;
       animation: slideInUp 1s ease-out 0.6s both;
@@ -320,18 +339,34 @@
     .trust { margin-top: 18px; color: var(--text-dim); font-size: 14px; }
 
     /* Features */
-    .section { padding: 70px 0 0 0; }
-    .section h2 { text-align: center; font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin: 0 0 14px; }
-    .section p.lead { text-align: center; margin: 0 auto 42px; color: var(--text-dim); max-width: 780px; }
+    .section { padding: 40px 0 0 0; }
+    .section h2 { text-align: center; 
+      /* font-size: clamp(4rem, 2.6vw, 2.2rem); */
+      font-size: 3.4rem;
+       margin: 0 0 14px; }
+    .section p.lead { text-align: center; margin: 0 auto 42px; color: var(--text-dim); max-width: 780px; font-size: 20px; font-weight: bold;}
 
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
 
     .card { 
-      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent); 
+      /* background: linear-gradient(180deg, rgba(255,255,255,.04), transparent);  */
       border: 1px solid var(--stroke); 
       border-radius: var(--radius-lg); 
-      padding: 18px; 
+      padding:20px 10px 50px 10px; 
+      box-shadow: var(--shadow-1);
+      transition: all 0.3s ease;
+      animation: fadeIn 0.8s ease-out;
+    }
+       .section h2 { text-align: center;
+         /* font-size: clamp(1.6rem, 2.6vw, 2.2rem); */
+         font-size: 3.4rem;
+          margin: 0 0 14px; }
+        .heading-point { 
+      /* background: linear-gradient(180deg, rgba(255,255,255,.04), transparent);  */
+      border: 1px solid var(--stroke); 
+      border-radius: var(--radius-lg); 
+      padding:20px; 
       box-shadow: var(--shadow-1);
       transition: all 0.3s ease;
       animation: fadeIn 0.8s ease-out;
@@ -341,6 +376,45 @@
       box-shadow: 0 20px 40px rgba(0,0,0,.4);
       border-color: rgba(255,122,24,0.3);
     }
+
+
+    .card-list-table-boxes{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+
+    }
+
+
+   .card-list-table { 
+      background: linear-gradient(180deg, rgba(209, 158, 16, 0.197), transparent); 
+      border: 1px solid var(--stroke); 
+      border-radius: var(--radius-md);
+      margin-top: 5px; 
+      padding: 10px; 
+      box-shadow: var(--shadow-1);
+      transition: all 0.3s ease;
+      animation: fadeIn 0.8s ease-out;
+      display: flex;
+    align-items: center;
+    
+    /* font-size: 2rem; */
+    gap: 10px;
+    }
+
+    .card-list-table:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+      border-color: rgba(255,122,24,0.3);
+    }
+    .card-list-table span{
+      font-weight: bold;
+      font-size: 23px;
+      text-transform: capitalize;
+    }
+
     .icon { 
       width: 46px; 
       height: 46px; 
@@ -358,7 +432,7 @@
       border-color: var(--primary);
     }
     .icon .emoji { font-size: 22px; }
-    .card h3 { margin: 6px 0 6px; font-size: 1.1rem; }
+    .card h3 { margin: 6px 0 6px; font-size: 1.4rem; font-weight: 700;}
     .card p { margin: 0; color: var(--text-dim); }
 
     /* Gallery */
@@ -398,6 +472,12 @@
     .tile--full { grid-column: span 12; aspect-ratio: 16/6; }
     @media (max-width: 900px){
       .tile--wide, .tile--tall, .tile--full { grid-column: span 12; }
+    }
+
+       .card-list-table span{
+      font-weight: bold;
+      font-size: 16px;
+      text-transform: capitalize;
     }
     /* Image overlay for better text readability */
     .tile::after { 
@@ -472,8 +552,42 @@
     .period { color: var(--text-dim); font-size: 14px; font-weight: 500; }
     .ul { list-style: none; padding: 0; margin: 16px 0 20px; }
     .ul li { display:flex; align-items:flex-start; gap: 10px; margin: 8px 0; color: var(--text-dim); }
-    .check-cencel { width: 18px; height: 18px; border-radius: 6px; background: rgba(209, 89, 42, 0.18); border: 1px solid rgba(214, 75, 51, 0.6); display:grid; place-items:center; font-size: 12px; color: #9cf0cf; }
-    .check { width: 18px; height: 18px; border-radius: 6px; background: rgba(51,214,159,.18); border: 1px solid rgba(51,214,159,.6); display:flex; align-items:center;justify-content: center; font-size: 12px; color: #9cf0cf; }
+    /* .check-cencel { width: 18px; height: 18px; border-radius: 6px; background: rgba(209, 89, 42, 0.18); border: 1px solid rgba(214, 75, 51, 0.6); display:flex; align-items:center; justify-content: center; font-size: 12px; color: #f83601; }
+    .check { width: 18px; height: 18px; border-radius: 6px; background: rgba(51,214,159,.18); border: 1px solid rgba(51,214,159,.6); display:flex; align-items:center;justify-content: center; font-size: 12px; color: #9cf0cf; } */
+
+    .check-cencel {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;   /* size fix */
+  min-height: 18px;
+  flex-shrink: 0;    /* shrink nahi hoga */
+  border-radius: 6px;
+  background: rgba(209, 89, 42, 0.18);
+  border: 1px solid rgba(214, 75, 51, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #f83601;
+  overflow: hidden;  /* content bahar na nikle */
+}
+
+.check {
+  width: 25px;
+  height: 25px;
+  min-width: 18px;
+  min-height: 18px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: rgba(51,214,159,.18);
+  border: 1px solid rgba(51,214,159,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #9cf0cf;
+  overflow: hidden;
+}
 
     /* Testimonials */
     .testi { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -507,7 +621,7 @@
 
     /* Footer */
     footer { padding: 38px 0  50px; color: var(--text-dim); border-top: 1px solid var(--stroke); background: #0b0c12; }
-    .footer-grid { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 18px; }
+    .footer-grid { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 18px; place-items: center; }
     @media (max-width: 1000px){ .footer-grid { grid-template-columns: 1fr; } }
     .small { font-size: 13px; color: #9aa2b4; }
 
@@ -534,6 +648,7 @@ color: black;
   </style>
 </head>
 <body>
+
   <!-- Animated Background -->
   <div class="bg-animation">
     <div class="floating-orb"></div>
@@ -546,11 +661,44 @@ color: black;
     <div class="particle"></div>
   </div>
 
+
+<!-- <div class="fixed-bottom-text">
+  <div class="bottom-left">
+    <h3>Start Earning <span style="color:red;">₹1 Cr</span> in One Day</h3>
+  </div>
+  <div class="bottom-right">
+    <a href="#" class="cta-btn">APPLY NOW</a>
+  </div>
+</div> -->
+
+
+<!-- Overlay background -->
+<div class="fixed-open-popup-form" id="popupForm" style="display: none;">
+  <div class="popup-content">
+    <span class="close-btn" onclick="document.getElementById('popupForm').style.display='none'">&times;</span>
+    
+    <h2>Apply Now 🚀</h2>
+    <form>
+      <div class="form-group">
+        <input type="text" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" placeholder="Your Phone" required>
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+
   <!-- Navbar -->
   <nav class="nav">
-    <div class="container nav-row">
-      <a class="brand" href="#">
-        <span class="logo" aria-hidden="true"> <img src="./logo.png" alt=""></span>
+    <!-- <div class="container nav-row">
+      <a class="" href="#">
+        <span class="" aria-hidden="true"> <img src="./logo.png" alt=""></span>
         <span>Iris<span style="color:var(--primary)">.Analyst</span></span>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
@@ -563,57 +711,30 @@ color: black;
         <a href="#" class="chip">Made in 🇮🇳</a>
         <a href="#" class="cta-btn" id="try-free">Try Free</a>
       </div>
-    </div>
+    </div> -->
   </nav>
 
   <!-- Hero -->
   <header class="hero container">
-    <div class="badge"><span class="spark"></span> New: Ultra model v3 — 30% faster</div>
-    <h1>🌟 Earn ₹1 Crore in 1 Year through IRIS Analysis Business</h1>
-    <p style="color: gold; font-weight: bold;">No Office Needed | No Staff Required | Work Globally from Home Limited to First 15 Brand Owners Only – Apply Now 📜 USA Certification – Become a Certified IRIS Analyst</p>
-    <div class="hero-cta">
+    <!-- <div class="badge"><span class="spark"></span> New: Ultra model v3 — 30% faster</div> -->
+    <h1>🌟 Earn ₹1 Crore in 1 Year 🌟 <br> <span style="color: gold;">IRIS Analysis Business</span></h1>
+    <p style="color: white; font-weight: bolder;" class="heading-point">Become a USA Certified Iris Analyst and Counselor </p>
+    <!-- <div class="hero-cta">
       <a href="#pricing" class="cta-btn">Start Free</a>
       <a href="#gallery" class="btn-secondary">See Examples</a>
-    </div>
+    </div> -->
 
-    <div class="hero-media mt-20">
-      <div class="fake-window">
-        <div class="window-bar">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="small" style="margin-left:10px;">Iris Studio</span>
-        </div>
-        <div class="canvas">
-          <!-- <div class="demo-text">
-            <div class="chip" style="animation: pulse 2s ease-in-out infinite;">Iris Studio Demo</div>
-            <h3 style="margin:.4rem 0 0">“a neon cyberpunk city street at night, cinematic, ultra detailed”</h3>
-            <p class="mute" style="margin-top:8px">Instant preview • Upscale 4x • Remove background • Variations</p>
-          </div> -->
-          <!-- <img src="./logo.png" alt=""> -->
-          <!-- Animated processing indicator -->
-          <div style="position: absolute; bottom: 20px; right: 20px; display: flex; gap: 8px;">
-            <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite;"></div>
-            <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite 0.2s;"></div>
-            <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite 0.4s;"></div>
-          </div>
-        </div>
-      </div>
-      <p class="trust">Watch Iris Studio in action • Join 50,000+ creators & developers • No credit card needed</p>
-    </div>
   </header>
 
   <!-- Iris Studio Demo Video -->
+
+  done wala hai 
   <section  class="section container">
     <h2>📹 Watch Before You Apply</h2>
     <p class="lead">Before applying, understand how this business works and what kind of impact it creates. This is a serious opportunity meant for serious action-takers.</p>
     <div style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-2); border: 1px solid var(--stroke);">
       <div style="position: relative; width: 100%; aspect-ratio: 16/9;">
-        <!-- <iframe 
-          src="https://youtu.be/pK1Dmqw9rxI?si=aX4TGvjXDp4ny_Cb" 
-          style="width: 100%; height: 100%; border: none;"
-          title="Iris Studio Demo"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe> -->
+  
         <iframe 
   style="width: 100%; height: 100%; border: none;" 
   src="https://www.youtube.com/embed/pm5RdRCI1BI?rel=0&modestbranding=1&controls=0&showinfo=0" 
@@ -624,7 +745,7 @@ color: black;
 </iframe>
       </div>
     </div>
-    <div style="text-align: center; margin-top: 20px;">
+    <!-- <div style="text-align: center; margin-top: 20px;">
  <div  style="display: flex;justify-content: space-around;flex-wrap: wrap; align-items: center; gap: 10px;">     
   <p class="mute">
     •	Watch the full video carefully
@@ -635,200 +756,51 @@ color: black;
 
 </p>
       <p class="mute">•	Final onboarding with Dr. Sanjay Gautam</p></div>
-    </div>
+    </div> -->
   </section>
 
-  <!-- Features -->
-  <section id="features" class="section container">
-    <h2>Why creators love Iris</h2>
-    <p class="lead">Simple UI, powerful controls. Studio‑quality outputs bina complex settings ke. Perfect for designers, marketers, aur indie devs.</p>
-    <div class="grid-3">
-      <div class="card">
-        <div class="icon"><span class="emoji">⚡</span></div>
-        <h3>🇮🇳 Proudly Supporting Make in India & Self-Reliance</h3>
-        <p>We’re not just building businesses — we’re building a self-reliant India. This opportunity supports Atmanirbhar Bharat by empowering individuals to become self-employed and self-sufficient.</p>
+
+  done wala hai 
+
+
+
+    <section id="how" class="section container">
+<div class="card" 
+  style="background:     
+    radial-gradient(1200px 600px at 80% -10%, rgba(169, 132, 10, 0.5), transparent 50%),
+    radial-gradient(800px 400px at -10% 10%, rgba(234, 199, 0, 0.6), transparent 45%),
+    linear-gradient(135deg, #0b0b0f 0%, #111218 50%, #0b0b0f 100%);
+    border-radius: 16px; 
+    padding: 20px; 
+    color: white;">
+
+    <h2>Why This Business?</h2>
+    <p class="lead">
+       We’re not just building businesses — we’re building a self-reliant India. This opportunity supports Atmanirbhar Bharat by empowering individuals to become self-employed and self-sufficient.
+        
+    </p>
+  
+   
     
-         <ul class="ul">
-          <li><span class="check">✓</span><span>50 generations / month</span></li>
-          <li><span class="check">✓</span><span>Basic styles & upscaler</span></li>
-          <li><span class="check">✓</span><span>Community gallery</span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="icon"><span class="emoji">🧠</span></div>
-        <h3>
-          A Business That Works For You
-        </h3>
-        <p>This business gives time, income, and purpose — without staff or daily operations.</p>
-
-
-            <ul class="ul">
-          <li><span class="check">✓</span><span>Work from anywhere</span></li>
-          <li><span class="check">✓</span><span>Automated tools do the heavy lifting</span></li>
-          <li><span class="check">✓</span><span>Part-time or full-time</span></li>
-          <li><span class="check">✓</span><span>Your brand, your pace</span></li>
-          <li><span class="check">✓</span><span>Freedom of time and money</span></li>
-        </ul>
-      </div>
-
-        <div class="card">
-        <div class="icon"><span class="emoji">🖌️</span></div>
-        <h3>
-        <!-- Why It’s Needed  -->
-         Who Can Apply?
-        </h3>
-        <p>If you’re someone with the right mindset — driven, futuristic, and eager to build something meaningful — this is for you. This business is designed for those who want:</p>
-
-
-            <ul class="ul">
-          <li><span class="check">✓</span><span>•	A scalable, future-ready model powered by automation</span></li>
-          <li><span class="check">✓</span><span>•	Bigger income potential without staff or office</span></li>
-          <li><span class="check">✓</span><span>•	Work-life balance with freedom of time and money</span></li>
-          <li><span class="check">✓</span><span>•	Teachers, HRs, professionals</span></li>
-          <li><span class="check">✓</span><span>•	Coaches, trainers, psychologists</span></li>
-        </ul>
-      </div>
-
-      
-      <!-- <div class="card">
-        <div class="icon"><span class="emoji">🖌️</span></div>
-      <h3>📊 <span style="color: red;"> 9–5 Job</span> vs <span style="color: gold;">IRIS Analysis Business</span></h3>
-     
-         <div style="display: flex;  justify-content: space-between; align-items: center;flex-wrap: wrap;">
-          <div class="jobs-trading">
-            <p>
-              9–5 Job / Traditional Business
-            </p>
-                  <ul class="ul">
-          <li><span class="check-cencel">✗ </span><span>Fixed hours, location bound</span></li>
-          <li><span class="check-cencel">✗</span><span>High investment, high risk</span></li>
-          <li><span class="check-cencel">✗</span><span>Needs staff & office</span></li>
-          <li><span class="check-cencel">✗</span><span>Slow growth & saturation</span></li>
-          <li><span class="check-cencel">✗</span><span>Limited impact</span></li>
-        </ul>
-          </div>
-             <div class="jobs-iris">
-            <p>
-              IRIS Analysis Business
-            </p>
-                  <ul class="ul">
-          <li><span class="check">✓</span><span>Work anytime, anywhere</span></li>
-          <li><span class="check">✓</span><span>Low investment, low risk</span></li>
-          <li><span class="check">✓</span><span>No staff, no office</span></li>
-          <li><span class="check">✓</span><span>Future-ready & scalable</span></li>
-          <li><span class="check">✓</span><span>Helps people deeply</span></li>
-        </ul>
-          </div>
+         <div class="card-list-table-boxes">
+           <div class="card-list-table "><span class="check">✓</span><span>No Office Needed</span></div>
+           <div class="card-list-table "><span class="check">✓</span><span>No Staff Required</span></div>
+           <div class="card-list-table "><span class="check">✓</span><span>Zero Competition</span></div>
+           <div class="card-list-table "><span class="check">✓</span><span>AI Based Business</span></div>
+           <div class="card-list-table "><span class="check">✓</span><span>Unlimited Income Potential</span></div>
+           <div class="card-list-table "><span class="check">✓</span><span>Be Your Own Boss</span></div>
+           <div class="card-list-table "><span class="check">✓</span><span>No Geographical Limitation</span></div>
+           <div class="card-list-table "><span class="check">✓</span><span>Your own brand of Iris Analysis</span></div>
          </div>
-      </div> -->
-   
-   
-    </div>
-  </section>
+      <div class="center-apply-btn">
+  <a class="cta-btn" href="#">
+    <span>APPLY IF YOU HAVE WATCHED 🎥</span>
+  </a>
+</div>
 
-  <!-- Gallery -->
-  <!-- <section id="gallery" class="section container">
-    <h2>Gallery</h2>
-    <p class="lead">Explore stunning AI-generated artwork from our community. Each piece showcases the power of Iris.AI.</p>
-    <div class="gallery">
-      <div class="tile tile--tall" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop&crop=face" alt="AI Portrait" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-        <span class="tag">Portrait</span>
       </div>
-      <div class="tile tile--tall" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=600&fit=crop" alt="Product Mockup" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-        <span class="tag">Product</span>
-      </div>
-      <div class="tile tile--tall" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=600&fit=crop" alt="Logo Design" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-        <span class="tag">Logo</span>
-      </div>
-      <div class="tile tile--wide" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop" alt="Landscape" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-        <span class="tag">Landscape</span>
-      </div>
-      <div class="tile tile--wide" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=400&fit=crop" alt="Concept Art" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-        <span class="tag">Concept Art</span>
-      </div>
-      <div class="tile tile--full" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=400&fit=crop" alt="Cinematic Scene" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-        <span class="tag">Cinematic</span>
-      </div>
-    </div>
-  </section> -->
-
-
-<section id="whatIsIris" class="section container">
-  <div class="price-card-what">
-    <!-- Left -->
-    <div class="left">
-      <h2>What Is IRIS Analysis?</h2>
-      <p >
-        Before applying, understand how this business works and what kind of impact it creates. 
-        This is a serious opportunity meant for serious action-takers.
-      </p>
-      <ul class="ul">
-        <li><span class="check">✓</span>Based on neuroscience, not astrology</li>
-        <li><span class="check">✓</span>Fully automated and non-invasive</li>
-        <li><span class="check">✓</span>Used for self-discovery,hiring coaching & more</li>
-      </ul>
-    </div>
-
-    <!-- Right -->
-    <div class="right">
-      <h3>📄 Types of Reports You Can Offer:</h3>
-      <ul class="ul">
-        <li><span class="check">✓</span>Toddlers (1–5 yrs)</li>
-        <li><span class="check">✓</span>Kids (6–10 yrs)</li>
-        <li><span class="check">✓</span>Students (11–21 yrs)</li>
-        <li><span class="check">✓</span>Career (18–30 yrs)</li>
-        <li><span class="check">✓</span>Campus to Corporate (20–25 yrs)</li>
-        <li><span class="check">✓</span>Corporate (25–55 yrs)</li>
-        <li><span class="check">✓</span>Whole Life (Any age)</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- How it works -->
-  <section id="how" class="section container">
-    <h2>⚖️ How It Works</h2>
-    <p class="lead">Fully automated and remote — all it takes is an AI-enabled iris scan. The scan can be done using a laptop camera or a mobile phone, making the process simple and accessible for anyone.</p>
-    <div class="steps">
-      <div class="step">
-        <h3>1. Step</h3>
-        <p>Client performs a guided iris scan</p>
-      </div>
-      <div class="step">
-        <h3>2. Step</h3>
-        <p>AI reads brain design from iris.</p>
-      </div>
-      <div class="step">
-        <h3>3. Step</h3>
-        <p>61-page PDF is generated instantly</p>
-      </div>
-
     
-           <div class="step">
-        <h3>4. Step</h3>
-        <p>	61-page PDF is generated instantly</p>
-      </div>
-    </div>
   </section>
-
-
 
 <section id="" class="section container">
     <h2 style="text-align: center;">Let's Comparison</h2>
@@ -923,87 +895,119 @@ color: black;
 
 
 
+    <section id="how" class="section container">
+    <div class="card" 
+  style="background:        
+    radial-gradient(600px 300px at 60% 40%, rgba(238, 204, 70, 0.25), transparent 60%),
+    radial-gradient(400px 200px at 30% 70%, rgba(217, 178, 5, 0.15), transparent 55%),
+    linear-gradient(135deg, #0b0b0f 0%, #111218 50%, #0b0b0f 100%);
+    border-radius: 16px; 
+    padding: 20px; 
+    color: white;
+    
+      
+      position: relative; margin-top: 40px;">
+          <div class="overlay-top-center">
+            <h1>Who should Apply?</h1>
 
-
-  <!-- Pricing -->
-  <section id="pricing" class="section container">
-    <h2
-    >
-    👥
-     <!-- Who Can Apply? -->
-     <!-- Who Can Apply? -->
-       Let's Earn ₹1 Crore in 1 year
-  </h2>
-    <p class="lead">If you’re someone with the right mindset — driven, futuristic, and eager to build something meaningful — this is for you. This business is designed for those who want:</p>
-    <div class="pricing">
-      <div class="price-card">
-        <div class="price-title"><h3><div style="font-size: 40px;">✨</div> ₹1 Crore in 1 Year Roadmap Avl.</h3>
-          <!-- <span class="pill">Best to try</span> -->
-        </div>
-        <div class="period">This model has been designed to scale fast — Roadmap available</div>
-        <ul class="ul">
-          <li><span style="padding-right: 10px;">•</span> 1–page roadmap with daily & weekly actions</span></li>
-          <li><span style="padding-right: 10px;">•</span>All branding, training & tools included</span></li>
-          <li><span style="padding-right: 10px;">•</span>  Realistic 1 crore target with multiple income streams</span></li>
-        </ul>
-        <a class="cta-btn" href="#">Apply Now</a>
-      </div>
-
-      <div class="price-card popular">
-        <div class="price-title"><h3> <div style="font-size: 40px;">🌎</div>  55+ Brand Owners Already Onboard</h3>
-          <!-- <span class="pill">Most popular</span> -->
-        </div>
-        <div class="period">This model has been designed to scale fast — Roadmap available</div>
-        <ul class="ul">
-          <li><span><span style="padding-right: 10px;">•</span> 	Remote from day 1</span></li>
-          <li><span> <span style="padding-right: 10px;">•</span> 	Private mentoring group</span></li>
-          <li><span> <span style="padding-right: 10px;">•</span> 	Shared resources & updates</span></li>
-          <li><span> <span style="padding-right: 10px;">•</span> No geographical boundaries—</span></li>
-        </ul>
-        <a class="cta-btn" href="#">Apply Now</a>
-      </div>
+          </div> 
+        <p class="lead" style="padding-top: 35px;">
+         If you’re someone with the right mindset — driven, futuristic, and eager to build something meaningful
+        </p>
+    <h2>This Is For You If You Want</h2>
   
+   
+    
+  <div class="card-list-table-boxes">
+  <div class="card-list-table"><span class="check">•</span><span>A scalable, future-ready model powered by AI and automation</span></div>
+  <div class="card-list-table"><span class="check">•</span><span>Bigger income potential without staff or office</span></div>
+  <div class="card-list-table"><span class="check">•</span><span>ork-life balance with freedom of time and money</span></div>
+  <div class="card-list-table"><span class="check">•</span><span>• To add value and impact to others while building wealth</span></div>
 
-         <div class="price-card">
-        <div class="price-title"><h3>  <div style="font-size: 40px;">🥹</div>  Not for Everyone</h3>
-          <!-- <span class="pill">Best to try</span> -->
-        </div>
+</div>
+      <div class="center-apply-btn">
+  <a class="cta-btn" href="#">
+    <span>APPLY IF YOU HAVE WATCHED 🎥</span>
+  </a>
+</div>
 
-           <div class="period">This is for serious action-takers only.</div>
-               <ul class="ul">
-          <li><span style="padding-right: 10px;">•</span> 1–page roadmap with daily & weekly actions</span></li>
-          <li><span style="padding-right: 10px;">•</span>All branding, training & tools included</span></li>
-          <li><span style="padding-right: 10px;">•</span>  Realistic 1 crore target with multiple income streams</span></li>
-        </ul>
-        <a class="cta-btn" href="#">Apply Now</a>
       </div>
-    </div>
+    
   </section>
+
+
+
+
+
 
 
     <section id="how" class="section container">
-    <h2 style="color: red;">👨‍👧‍👧 Who Are the End Customers?</h2>
+      <div class="card">
+    <h2>This Business Is Best Suited For</h2>
     <p class="lead">
-   You serve everyone — because everyone wants clarity about themselves.
+       We’re not just building businesses — we’re building a self-reliant India. This opportunity supports Atmanirbhar Bharat by empowering individuals to become self-employed and self-sufficient.
+        
     </p>
+  
+   
+    
+  <div class="card-list-table-boxes">
+  <div class="card-list-table"><span class="check">✓</span><span>Coaches</span></div>
+  <div class="card-list-table"><span class="check">✓</span><span>Counselors</span></div>
+  <div class="card-list-table"><span class="check">✓</span><span>Housewives</span></div>
+  <div class="card-list-table"><span class="check">✓</span><span>Educationist</span></div>
+  <div class="card-list-table"><span class="check">✓</span><span>Business Owners</span></div>
+  <div class="card-list-table"><span class="check">✓</span><span>Retired People</span></div>
+  <div class="card-list-table"><span class="check">✓</span><span>Any Professionals</span></div>
+  <div class="card-list-table"><span class="check">✓</span><span>(No Technical Skills Required)</span></div>
+</div>
+      <div class="center-apply-btn">
+  <a class="cta-btn" href="#" >
+    <span>APPLY IF YOU HAVE WATCHED 🎥</span>
+  </a>
+</div>
+      </div>
+    
+  </section>
+
+
+  <!-- How it works -->
+  <section id="how" class="section container">
+    <h2>⚖️ ELIGIBILITY CRITERIA</h2>
+    <p class="lead">Fully automated and remote — all it takes is an AI-enabled iris scan. The scan can be done using a laptop camera or a mobile phone, making the process simple and accessible for anyone.</p>
     <div class="steps">
       <div class="step">
-        <h3 style="color: red;">	Toddlers (1–5 yrs) </h3>
-        <p>– For early brain & behavior insights</p>
+        <h3>Age- 25 years and above</h3>
+        <!-- <p></p> -->
       </div>
       <div class="step">
-           <h3 style="color: red;">	  Kids & Students (6–21 yrs) </h3>
-        <p>– For subject & career alignment</p>
+        <h3>Educational qualification – Graduate. </h3>
+        
       </div>
       <div class="step">
-           <h3 style="color: red;"> Working Professionals (22–55 yrs) </h3>
-        <p>– For career fitment & leadership</p>
+        <h3>Investment amount -  Approx. 5 lakhs</h3>
+        
       </div>
 
     
-  
+     
     </div>
   </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
   <!-- Testimonials -->
   <section class="section container">
     <h2>What people say</h2>
@@ -1098,37 +1102,28 @@ color: black;
 
   <!-- Footer -->
   <footer>
-    <div class="container footer-grid">
-      <div>
-        <div class="brand"><span class="logo"><img src="./logo.png" alt=""></span><span>Iris<span style="color:var(--primary)">.Analyst</span></span></div>
+    <div class="">
+      <div class="" style="display: flex;
+      align-items: center;justify-content: center; flex-direction: column;">
+        <div class="brand"><span class="logo"><img src="./logo.png" alt=""></span></span></div>
         <p class="small mt-20">Made with ❤️ in India. © <span id="year"></span> Iris Labs.</p>
       </div>
-      <div>
-        <strong>Product</strong>
-        <p class="small">Features<br>Pricing<br>Changelog<br>Status</p>
-      </div>
-      <div>
-        <strong>Company</strong>
-        <p class="small">About<br>Careers<br>Press<br>Contact</p>
-      </div>
-      <div>
-        <strong>Legal</strong>
-        <p class="small">Terms<br>Privacy<br>Refunds<br>Licensing</p>
-      </div>
+
     </div>
   </footer>
 
   <script>
     // Mobile menu
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    // const menuToggle = document.getElementById('menuToggle');
+    // const navLinks = document.getElementById('navLinks');
+    // menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
 
     // FAQ accordion
     document.querySelectorAll('.faq-item').forEach((item) => {
       const q = item.querySelector('.faq-q');
       const a = item.querySelector('.faq-a');
       q.addEventListener('click', () => {
+        // alert('hiii')
         const isOpen = a.style.maxHeight && a.style.maxHeight !== '0px';
         document.querySelectorAll('.faq-a').forEach(el => { el.style.maxHeight = null; el.classList.remove('open'); });
         if (!isOpen) { a.style.maxHeight = a.scrollHeight + 'px'; a.classList.add('open'); }
@@ -1209,6 +1204,13 @@ color: black;
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
   </script>
+  <script>
+  function openPopup() {
+    document.getElementById('popupForm').style.display = 'flex';
+  }
+</script>
+
 </body>
 </html>
