@@ -207,15 +207,31 @@ padding-top: 20px;
 
 gap: 10px;
   align-items: center;
-  /* flex-direction: column; */
+  flex-direction: column;
   padding: 20px;
   box-shadow: 0 -3px 12px rgba(0,0,0,0.3);
   z-index: 9999;
 
   }
+  .fixed-bottom-text .cta-btn {
+  background: red;
+  color: white;
+  font-weight: 700;
+  padding: 10px 50px;
+  width: 100%;
+  border-radius: 9px;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.5rem;
+  box-shadow: 0 6px 20px rgba(255,0,0,.35);
+  transition: all .3s ease;
+  text-decoration: none;
+}
 
   .fixed-bottom-text h3 {
-    font-size: 0.8rem;
+    font-size: 1.5rem;
+    width: 100%;
+white-space: nowrap;
   }
 
   
@@ -315,3 +331,5 @@ gap: 10px;
     border: 2px solid #4caf50; 
     color: black;
   } */
+
+
